@@ -19,7 +19,7 @@ fun main() {
     fun part2(input: List<String>): Int {
         val elvesSum = mutableListOf<Int>()
         var tempSum = 0
-        input.forEach{ inputString ->
+        input.forEach { inputString ->
             if (inputString.isBlank()) {
                 elvesSum.add(tempSum)
                 tempSum = 0
