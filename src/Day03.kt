@@ -15,7 +15,7 @@ fun main() {
             val firstComp = it.substring(0, it.length / 2).toSet()
             val secondComp = it.substring(it.length / 2, it.length).toSet()
             val intersection = firstComp.intersect(secondComp)
-            sum += intersection.first().priority()
+            sum += intersection.single().priority()
         }
         return sum
     }
@@ -26,7 +26,7 @@ fun main() {
             sum += (input[i].toSet()
                     intersect input[i + 1].toSet()
                     intersect input[i + 2].toSet())
-                .first().priority()
+                .single().priority()
         }
         return sum
     }
