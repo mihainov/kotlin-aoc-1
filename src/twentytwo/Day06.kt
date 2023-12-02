@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 fun main() {
     outerFunc@ fun part1(input: List<String>): Int {
@@ -22,11 +22,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day06_test")
+    val testInput = readInputTwentyTwo("Day06_test")
     check(part1(testInput).also(::println) == 5)
     check(part2(testInput).also(::println) == 23)
 
-    val input = readInput("Day06")
+    val input = readInputTwentyTwo("Day06")
     println(part1(input))
     println(part2(input))
 }

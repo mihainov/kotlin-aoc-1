@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 import java.util.*
 import java.util.stream.Collectors
 
@@ -89,11 +89,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day05_test")
+    val testInput = readInputTwentyTwo("Day05_test")
     check(part1(testInput).also(::println) == "CMZ")
     check(part2(testInput).also(::println) == "MCD")
 
-    val input = readInput("Day05")
+    val input = readInputTwentyTwo("Day05")
     println(part1(input))
     println(part2(input))
 }

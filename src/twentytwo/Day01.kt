@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 import kotlin.math.max
 
 fun main() {
@@ -39,11 +39,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
+    val testInput = readInputTwentyTwo("Day01_test")
     check(part1(testInput) == 24_000)
     check(part2(testInput) == 45_000)
 
-    val input = readInput("Day01")
+    val input = readInputTwentyTwo("Day01")
     println(part1(input))
     println(part2(input))
 }

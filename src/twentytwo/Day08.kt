@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 data class Visibility(
     var fromTop: Boolean = false,
@@ -97,11 +97,11 @@ fun main() {
     }
 
 // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day08_test")
+    val testInput = readInputTwentyTwo("Day08_test")
     check(part1(testInput).also(::println) == 21)
     check(part2(testInput).also(::println) == 0)
 
-    val input = readInput("Day08")
+    val input = readInputTwentyTwo("Day08")
     println(part1(input))
     println(part2(input))
 }

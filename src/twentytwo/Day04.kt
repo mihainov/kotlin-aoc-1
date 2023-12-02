@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 data class Section(val start: Int, val end: Int) {
     fun getSize(): Int {
@@ -43,11 +43,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day04_test")
+    val testInput = readInputTwentyTwo("Day04_test")
     check(part1(testInput).also(::println) == 2)
     check(part2(testInput).also(::println) == 4)
 
-    val input = readInput("Day04")
+    val input = readInputTwentyTwo("Day04")
     println(part1(input))
     println(part2(input))
 }

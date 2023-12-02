@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 data class File(val size: Int, val name: String)
 
@@ -122,11 +122,11 @@ fun main() {
     }
 
 // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day07_test")
+    val testInput = readInputTwentyTwo("Day07_test")
     check(part1(testInput).also(::println) == 95437)
     check(part2(testInput).also(::println) == 24933642)
 
-    val input = readInput("Day07")
+    val input = readInputTwentyTwo("Day07")
     println(part1(input))
     println(part2(input))
 }

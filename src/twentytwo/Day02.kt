@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 abstract class Shape {
     abstract val score: Int
@@ -122,11 +122,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day02_test")
+    val testInput = readInputTwentyTwo("Day02_test")
     check(part1(testInput) == 15)
     check(part2(testInput) == 12)
 
-    val input = readInput("Day02")
+    val input = readInputTwentyTwo("Day02")
     println(part1(input))
     println(part2(input))
 }

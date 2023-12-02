@@ -1,6 +1,6 @@
 package twentytwo
 
-import readInput
+import readInputTwentyTwo
 
 //helper function to handle destructuring if there is no second element
 operator fun <T> List<out T>.component2(): T? = if (size > 1) get(1) else null;
@@ -79,11 +79,11 @@ fun main() {
 
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day00_test")
+    val testInput = readInputTwentyTwo("Day00_test")
     check(part1(testInput).also(::println) == 13140)
     check(part2(testInput).also(::println) == 0)
 
-    val input = readInput("Day00")
+    val input = readInputTwentyTwo("Day00")
     println(part1(input))
     println(part2(input))
 }
