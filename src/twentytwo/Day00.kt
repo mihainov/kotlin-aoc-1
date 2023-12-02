@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 fun main() {
     fun part1(input: List<String>): Int {
         return 0

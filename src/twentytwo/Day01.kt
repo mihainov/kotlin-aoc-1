@@ -1,3 +1,6 @@
+package twentytwo
+
+import readInput
 import kotlin.math.max
 
 fun main() {

@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 abstract class Shape {
     abstract val score: Int
     abstract fun fightWith(shape: Shape): Int

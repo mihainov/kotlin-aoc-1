@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 data class File(val size: Int, val name: String)
 
 typealias FileSystem = MutableMap<String, MutableList<File>>

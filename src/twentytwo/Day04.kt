@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 data class Section(val start: Int, val end: Int) {
     fun getSize(): Int {
         return end - start

@@ -1,3 +1,6 @@
+package twentytwo
+
+import readInput
 import java.util.*
 import java.util.stream.Collectors
 

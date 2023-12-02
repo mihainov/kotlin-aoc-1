@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 fun main() {
     outerFunc@ fun part1(input: List<String>): Int {
         input.single().windowed(4).forEachIndexed { idx, string ->

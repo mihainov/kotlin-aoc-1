@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 // ext fun to get the priority of the char according to the task
 fun Char.priority(): Int {
     val ascii = this.code

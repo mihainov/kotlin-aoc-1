@@ -1,3 +1,7 @@
+package twentytwo
+
+import readInput
+
 data class Visibility(
     var fromTop: Boolean = false,
     var fromLeft: Boolean = false,
