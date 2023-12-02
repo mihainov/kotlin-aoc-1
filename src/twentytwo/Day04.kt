@@ -8,14 +8,14 @@ data class Section(val start: Int, val end: Int) {
     }
 }
 
-data class ElfSections(val firstSection: Section, val secondSection: Section)
+data class ElfSections(val firstSection: Section?, val secondSection: Section?)
 
 fun String.toSections(): ElfSections {
     val elvesSection = this.split(",")
     val firstElfSections = elvesSection.component1().split("-")
-    val firstSection = Section(firstElfSections.component1().toInt(), firstElfSections.component2().toInt())
-    val secondElfSections = elvesSection.component2().split("-")
-    val secondSection = Section(secondElfSections.component1().toInt(), secondElfSections.component2().toInt())
+    val firstSection = Section(firstElfSections.component1().toInt(), firstElfSections.component2()!!.toInt())
+    val secondElfSections = elvesSection.component2()!!.split("-")
+    val secondSection = Section(secondElfSections.component1().toInt(), secondElfSections.component2()!!.toInt())
 
     // sort so that the bigger section is always first
     val sections = listOf(firstSection, secondSection).sortedBy { it.getSize() }.reversed()
@@ -26,7 +26,7 @@ fun main() {
     fun part1(input: List<String>): Int {
         return input.map { it.toSections() }
             .stream()
-            .filter { it.firstSection.start <= it.secondSection.start && it.firstSection.end >= it.secondSection.end }
+            .filter { it.firstSection!!.start <= it.secondSection!!.start && it.firstSection.end >= it.secondSection.end }
             .count()
             .toInt()
     }
@@ -35,7 +35,7 @@ fun main() {
         return input.map { it.toSections() }
             .stream()
             .filter {
-                it.secondSection.start in it.firstSection.start..it.firstSection.end
+                it.secondSection!!.start in it.firstSection!!.start..it.firstSection.end
                         || it.secondSection.end in it.firstSection.start..it.firstSection.end
             }
             .count()

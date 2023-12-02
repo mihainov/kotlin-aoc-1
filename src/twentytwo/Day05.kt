@@ -45,7 +45,7 @@ class Dock(nStacks: Int) {
     fun handleOperationWithCrateMover9000(operation: String) {
         // move 3 from 2 to 1
         val (_, nCrates, _, fromStack, _, toStack) = operation.split(' ')
-        operateCrateMover9000(nCrates.toInt(), fromStack.toInt(), toStack.toInt())
+        operateCrateMover9000(nCrates!!.toInt(), fromStack.toInt(), toStack.toInt())
     }
 
     private fun operateCrateMover9000(nCrates: Int, fromStack: Int, toStack: Int) {
@@ -58,7 +58,7 @@ class Dock(nStacks: Int) {
     fun handleOperationWithCrateMover9001(operation: String) {
         // move 3 from 2 to 1
         val (_, nCrates, _, fromStack, _, toStack) = operation.split(' ')
-        operateCrateMover9001(nCrates.toInt(), fromStack.toInt(), toStack.toInt())
+        operateCrateMover9001(nCrates!!.toInt(), fromStack.toInt(), toStack.toInt())
     }
 
     private fun operateCrateMover9001(nCrates: Int, fromStack: Int, toStack: Int) {

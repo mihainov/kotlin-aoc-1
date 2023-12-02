@@ -62,12 +62,12 @@ fun parseInput(terminal: String, currentDir: MutableList<String>, fs: FileSystem
     }
 
     if (terminalSplit.first() == "dir") {
-        fs[path]?.add(File(-1, terminalSplit.component2()))
+        fs[path]?.add(File(-1, terminalSplit.component2()!!))
         return
     }
 
     fs[path]
-        ?.add(File(terminalSplit.first().toInt(), terminalSplit.component2()))
+        ?.add(File(terminalSplit.first().toInt(), terminalSplit.component2()!!))
 
 }
 
