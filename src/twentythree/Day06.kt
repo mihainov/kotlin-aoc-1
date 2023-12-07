@@ -13,14 +13,13 @@ data class Race(val time: Long, val distance: Long)
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val times = input[0].substring(input[0].indexOf(':') + 1)
+        val times = input[0].substringAfter(':')
             .split(" ")
             .filter(String::isNotBlank)
             .map(String::trim)
             .map(String::toLong)
 
-        val distances = input[1]
-            .substring(input[1].indexOf(':') + 1)
+        val distances = input[1].substringAfter(':')
             .split(" ")
             .filter(String::isNotBlank)
             .map(String::trim)
