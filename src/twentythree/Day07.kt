@@ -12,11 +12,11 @@ enum class Combination {
     HIGH;
 }
 
+// functionality is changed to solve p2
 enum class PlayingCard(val code: String) {
     ACE("A"),
     KING("K"),
     QUEEN("Q"),
-    JACK("J"),
     TEN("T"),
     NINE("9"),
     EIGHT("8"),
@@ -25,7 +25,8 @@ enum class PlayingCard(val code: String) {
     FIVE("5"),
     FOUR("4"),
     THREE("3"),
-    TWO("2");
+    TWO("2"),
+    JACK("J");
 }
 
 fun String.getCardByCode(): PlayingCard {
@@ -36,39 +37,79 @@ data class Hand(val cards: List<PlayingCard>, val bet: Int) : Comparable<Hand> {
     fun getStrength(): Combination {
         val occurrences = PlayingCard.values().associateWith { 0 }.toMutableMap()
         this.cards.forEach { occurrences[it] = occurrences[it]!!.inc() }
+        val jacks = occurrences[PlayingCard.JACK]
+        if (jacks == 5) {
+            return Combination.FIVE_OF_A_KIND
+        }
+        occurrences[PlayingCard.JACK] = 0
         val sorted = occurrences.values.sortedDescending()
         return when (sorted.first()) {
             5 -> Combination.FIVE_OF_A_KIND
-            4 -> Combination.FOUR_OF_A_KIND
-            3 -> if (sorted[1] == 2) {
-                Combination.FULL_HOUSE
+            4 -> return if (jacks == 1) {
+                Combination.FIVE_OF_A_KIND
             } else {
-                Combination.THREE_OF_A_KIND
+                Combination.FOUR_OF_A_KIND
             }
 
-            2 -> if (sorted[1] == 2) {
-                Combination.TWO_PAIR
-            } else {
-                Combination.PAIR
+            3 -> {
+                when (jacks) {
+                    0 -> if (sorted[1] == 2) {
+                        Combination.FULL_HOUSE
+                    } else {
+                        Combination.THREE_OF_A_KIND
+                    }
+
+                    1 -> Combination.FOUR_OF_A_KIND
+                    2 -> Combination.FIVE_OF_A_KIND
+                    else -> error("3 same cards and more than 2 jacks")
+                }
             }
 
-            1 -> Combination.HIGH
-            else -> Combination.HIGH
+            2 -> {
+                when (jacks) {
+                    3 -> return Combination.FIVE_OF_A_KIND
+                    2 -> return Combination.FOUR_OF_A_KIND
+                    1 -> return if (sorted[1] == 2) {
+                        Combination.FULL_HOUSE
+                    } else {
+                        Combination.THREE_OF_A_KIND
+                    }
+
+                    0 -> return if (sorted[1] == 2) {
+                        Combination.TWO_PAIR
+                    } else {
+                        Combination.PAIR
+                    }
+
+                    else -> error("2 same cards and more than 3 jacks")
+                }
+            }
+
+            1 -> {
+                when (jacks) {
+                    4 -> return Combination.FIVE_OF_A_KIND
+                    3 -> return Combination.FOUR_OF_A_KIND
+                    2 -> return Combination.THREE_OF_A_KIND
+                    1 -> return Combination.PAIR
+                    0 -> return Combination.HIGH
+                    else -> error("no duplicates and more than 4 jacks")
+                }
+            }
+
+            else -> error("No occurrences")
         }
     }
 
     override fun compareTo(other: Hand): Int {
         this.getStrength().compareTo(other.getStrength()).let {
             if (it != 0) {
-                print("$this compared to $other is")
-                return it.also(::println)
+                return it
             }
         }
-        print("Comparing $this to $other")
         this.cards.indices.forEach { idx ->
             this.cards[idx].compareTo(other.cards[idx]).let {
                 if (it != 0) {
-                    return it.also(::println)
+                    return it
                 }
             }
         }
@@ -98,7 +139,12 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        return 0
+        val hands = input.map { it.parseHand().also { println("Parsed hand $it with strength ${it.getStrength()}") } }
+            .sortedDescending()
+
+        return hands.mapIndexed { index, hand ->
+            ((index + 1) * hand.bet).also { println("${index + 1} $hand ${hand.getStrength()} has a total value of $it") }
+        }.sum()
     }
 
     // test if implementation meets criteria from the description, like:
@@ -123,8 +169,8 @@ fun main() {
     //2AAAA 23
     //2JJJJ 53
     //JJJJ2 41
-    check(part1(testInput).also(::println) == 6592)
-//    check(part2(testInput).also(::println) == 6839)
+//    check(part1(testInput).also(::println) == 6592)
+    check(part2(testInput).also(::println) == 6839)
 
     val input = readInputTwentyThree("Day07")
     println(part1(input))
