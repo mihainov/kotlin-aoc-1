@@ -5,13 +5,19 @@ import java.security.MessageDigest
 /**
  * Reads lines from the given input txt file.
  */
-fun readInputTwentyTwo(name: String) = File("src/twentytwo", "$name.txt")
+fun readInputTwentyTwo(name: String) = File("src/twentytwo/$name.txt")
     .readLines()
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInputTwentyThree(name: String) = File("src/twentythree", "$name.txt")
+fun readInputTwentyThree(name: String) = File("src/twentythree/$name.txt")
+    .readLines()
+
+/**
+ * Reads lines from the given input txt file.
+ */
+fun readInputTwentyFour(name: String) = File("src/twentyfour/$name.txt")
     .readLines()
 
 /**
